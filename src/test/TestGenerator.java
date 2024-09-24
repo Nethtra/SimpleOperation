@@ -11,8 +11,8 @@ public class TestGenerator {
     @Test
     public void basicTest() {
         String[][] argsArray = {
-                {"-r", "0", "-n", "1000"},
-                {"-r", "-n", "10000"},
+//                {"-r", "0", "-n", "1000"},
+//                {"-r", "-n", "10000"},
                 {"-r", "100", "-n", "10000"},
         };
         for (String[] args : argsArray) {

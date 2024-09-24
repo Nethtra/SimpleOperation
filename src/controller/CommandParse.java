@@ -121,9 +121,7 @@ public class CommandParse {
             Result.expressionCnt += 1;
             Result.Exercises.append(line + expression.toString() + "\n");
             Result.Answers.append(line + expression.value.toString() + "\n");
-            if(Result.expressionCnt<200) {
-                Result.Katex.append("+\"" + line + expression.toKatex() + "=" + expression.value.toKatex() + "\\\\newline\\\\quad\\\\newline" + "\"" + "\n");
-            }
+
             conflict.add(operation.left.value.numerator);
             conflict.add(operation.right.value.numerator);
         }

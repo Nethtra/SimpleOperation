@@ -99,22 +99,6 @@ public class FractionNum {
             right.set(0);
             return;
         }
-//        int mixedDenominator =0;
-//        for(int times=2;times*getNum()<Restrict._r;times+=1){
-//            mixedDenominator=times*getNum();
-//            if(mixedDenominator*numerator<Restrict._r){
-//                if(mixedDenominator*numerator==0){
-//                    System.out.println(new Throwable().getStackTrace()[0]);
-//                }
-//                int leftNumerator=RandomUnit.getInt()%(mixedDenominator*numerator);
-//                if(leftNumerator==0){
-//                    leftNumerator+=1;
-//                }
-//                left.set(leftNumerator,mixedDenominator);
-//                right.set(mixedDenominator*numerator-leftNumerator,mixedDenominator);
-//                return;
-//            }
-//        }
         int val=numerator/denominator;
         int leftInt=0;
         //限制加法左边的数不为0也不刚好是上一个值
@@ -155,25 +139,7 @@ public class FractionNum {
         left.set(leftNumerator,i*denominator);
         right.set(rightNumerator,i*denominator);
     }
-//    public void splitFractionSub(FractionNum left, FractionNum right){
-//        int i=1;
-//        for(;i*denominator<Restrict._r;i+=1){
-//
-//        }
-//        i-=1;
-//        if(i==0){
-//            i=1;
-//        }
-//        int newDenominator=i*denominator;
-//        int leftNumerator=0;
-//        while (leftNumerator<=0||leftNumerator>=newDenominator){
-//            leftNumerator=newDenominator-(RandomUnit.getInt()%newDenominator);
-//        }
-//        int rightNumerator=newDenominator-leftNumerator;
-//
-//        left.set(leftNumerator,newDenominator);
-//        right.set(rightNumerator,newDenominator);
-//    }
+
     public void splitFractionSub(FractionNum left, FractionNum right){
         if(numerator>=denominator){
             System.out.println(new Throwable().getStackTrace()[0]);

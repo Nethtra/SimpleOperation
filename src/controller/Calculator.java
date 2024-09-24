@@ -13,21 +13,20 @@ public class Calculator {
      * 解析并计算四则运算表达式(含括号)，返回计算结果
      *
      * @param numStr
-     *            算术表达式(含括号)
      */
     public FractionNum calculate(String numStr) {
-        if(numStr!=null)
-            numStr=numStr.replaceAll(" ", "");//去除空格方便处理
+        if (numStr != null)
+            numStr = numStr.replaceAll(" ", "");//去除空格方便处理
         else {
             return new FractionNum(0);
         }
         // 如果算术表达式尾部没有‘=’号，则在尾部添加‘=’，表示结束符
-        if (numStr.length() >= 1 && !('='==numStr.charAt(numStr.length() - 1))) {
+        if (numStr.length() >= 1 && !('=' == numStr.charAt(numStr.length() - 1))) {
             numStr += "=";
         }
         // 检查表达式是否合法
         if (!isStandard(numStr)) {
-            System.out.println(new Throwable().getStackTrace()[0]+":"+numStr);
+            System.out.println(new Throwable().getStackTrace()[0] + ":" + numStr);
             return new FractionNum(0);
         }
         // 初始化栈
@@ -55,22 +54,22 @@ public class Calculator {
                     switch (operationStack.pop()) {
                         //处理带分数
                         case '’':
-                            fractionNumStack.push(FractionNum.with(a , b));
+                            fractionNumStack.push(FractionNum.with(a, b));
                             break;
                         //处理普通运算符
                         case '+':
-                            fractionNumStack.push(FractionNum.add(a , b));
+                            fractionNumStack.push(FractionNum.add(a, b));
                             break;
                         case '-':
-                            fractionNumStack.push(FractionNum.sub(a , b));
+                            fractionNumStack.push(FractionNum.sub(a, b));
                             break;
                         case '×':
                         case '*':
-                            fractionNumStack.push(FractionNum.mul(a ,  b));
+                            fractionNumStack.push(FractionNum.mul(a, b));
                             break;
                         case '/':
                         case '÷':
-                            fractionNumStack.push(FractionNum.div(a ,  b));
+                            fractionNumStack.push(FractionNum.div(a, b));
                             break;
                         default:
                             break;
@@ -87,8 +86,10 @@ public class Calculator {
         }
         return fractionNumStack.pop(); // 返回计算结果
     }
+
     /**
      * 检查是不是合法的表达式
+     *
      * @param numStr
      * @return
      */
@@ -102,29 +103,29 @@ public class Calculator {
             // 判断字符是否合法
             if (!(
                     isNumber(nowChar)
-                    || '('==nowChar
-                    || ')'==nowChar
-                    || '+'==nowChar
-                    || '-'==nowChar
-                    || '*'==nowChar
-                    || '/'==nowChar
-                    || '='==nowChar
-                    || '÷'==nowChar
-                    || '×'==nowChar
-                    || '’'==nowChar
+                            || '(' == nowChar
+                            || ')' == nowChar
+                            || '+' == nowChar
+                            || '-' == nowChar
+                            || '*' == nowChar
+                            || '/' == nowChar
+                            || '=' == nowChar
+                            || '÷' == nowChar
+                            || '×' == nowChar
+                            || '’' == nowChar
             )) {
                 return false;
             }
             // 将左括号压栈，用来给后面的右括号进行匹配
-            if ('('==nowChar) {
+            if ('(' == nowChar) {
                 stack.push(nowChar);
             }
-            if (')'==nowChar) { // 匹配括号
-                if (stack.isEmpty() || !('('==stack.pop())) // 括号是否匹配
+            if (')' == nowChar) { // 匹配括号
+                if (stack.isEmpty() || !('(' == stack.pop())) // 括号是否匹配
                     return false;
             }
             // 检查是否有多个'='号
-            if ('='==nowChar) {
+            if ('=' == nowChar) {
                 if (haveEq)
                     return false;
                 haveEq = true;
@@ -136,6 +137,7 @@ public class Calculator {
         // 检查'='号是否不在末尾
         return '=' == numStr.charAt(numStr.length() - 1);
     }
+
     /**
      * 判断字符是否是0-9的数字
      */
